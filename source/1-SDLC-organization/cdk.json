@@ -7,7 +7,7 @@
     "github_repo_branch": "main",
     "email": "aws-accounts@mperativ.io",
     "domain_name": "mperativ.wtf",
-    "force_email_verification": true,
+    "force_email_verification": false,
     "pipeline_deployable_regions": ["us-east-1"]
   }
 }
