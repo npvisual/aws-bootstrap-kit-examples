@@ -12,7 +12,8 @@
     "cdk": "cdk",
     "bootstrap": "cdk --profile main-admin bootstrap --cloudformation-execution-policies arn:aws:iam::aws:policy/AdministratorAccess",
     "synth": "cdk --profile main-admin synth",
-    "deploy": "cdk --profile main-admin deploy"
+    "deploy": "cdk --profile main-admin deploy",
+    "diff": "cdk --profile main-admin diff"
   },
   "devDependencies": {
     "@aws-cdk/assert": "2.1.0",
@@ -27,7 +28,7 @@
   "dependencies": {
     "aws-cdk-lib": "2.1.0",
     "constructs": "10.0.12",
-    "aws-bootstrap-kit": "0.7.0",
+    "aws-bootstrap-kit": "0.7.4",
     "source-map-support": "^0.5.16"
   }
 }
