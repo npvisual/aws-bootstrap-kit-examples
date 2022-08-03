@@ -20,7 +20,7 @@ import {
     AWSBootstrapKitLandingZonePipelineStack,
     AWSBootstrapKitLandingZoneStage
 } from '../lib/cicd-stack';
-import {AccountType} from 'aws-bootstrap-kit';
+import { AccountType, OUSpec } from 'aws-bootstrap-kit';
 
 const app = new cdk.App();
 
@@ -29,7 +29,7 @@ const rootHostedZoneDNSName = app.node.tryGetContext("domain_name");
 const thirdPartyProviderDNSUsed = app.node.tryGetContext("third_party_provider_dns_used");
 const forceEmailVerification = app.node.tryGetContext("force_email_verification");
 const pipelineDeployableRegions = app.node.tryGetContext("pipeline_deployable_regions");
-const nestedOU = [
+const nestedOU: OUSpec[] = [
     {
         name: 'SharedServices',
         accounts: [
@@ -45,27 +45,31 @@ const nestedOU = [
             {
                 name: 'Dev',
                 type: AccountType.PLAYGROUND
-            },
-            {
-                name: 'Staging',
-                type: AccountType.STAGE,
-                stageName: 'staging',
-                stageOrder: 1,
-                hostedServices: ['ALL']
             }
         ]
     },
     {
-        name: 'Prod',
-        accounts: [
+        name: 'Tenants',
+        nestedOU: [
             {
-                name: 'Prod',
-                type: AccountType.STAGE,
-                stageName: 'prod',
-                stageOrder: 2,
-                hostedServices: ['ALL'],
-                // when using bootstrap kit on existing organisation, you can import existing accounts in the OU hierarchy:
-                // existingAccountId: '123456789012'
+                name: 'mperativ',
+                accounts: [
+                    {
+                        name: 'Staging',
+                        type: AccountType.STAGE,
+                        stageName: 'staging',
+                        stageOrder: 1,
+                        hostedServices: ['ALL'],
+                        // existingAccountId: '060465997059'
+                    },
+                    {
+                        name: 'Prod',
+                        type: AccountType.STAGE,
+                        stageName: 'prod',
+                        stageOrder: 2,
+                        hostedServices: ['ALL']
+                    }
+                ]
             }
         ]
     }
