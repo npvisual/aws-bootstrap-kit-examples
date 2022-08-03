@@ -85,7 +85,7 @@ export class AWSBootstrapKitLandingZonePipelineStack extends Stack {
       value: `https://${Stack.of(this).region}.console.aws.amazon.com/codesuite/codepipeline/pipelines/${pipelineName}/view?region=${Stack.of(this).region}`,
     });
 
-    const prodStage = pipeline.addStage(new AWSBootstrapKitLandingZoneStage(this, 'Prod', props));
+    const prodStage = pipeline.addStage(new AWSBootstrapKitLandingZoneStage(this, 'LandingZone', props));
 
     const deployableRegions = props.pipelineDeployableRegions ?? [Stack.of(this).region];
     const regionsInShellScriptArrayFormat = deployableRegions.join(' ');

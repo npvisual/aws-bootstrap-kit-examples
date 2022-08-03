@@ -76,7 +76,7 @@ const nestedOU: OUSpec[] = [
 ];
 
 
-new AWSBootstrapKitLandingZoneStage(app, 'Prod',{
+new AWSBootstrapKitLandingZoneStage(app, 'LandingZone',{
   email,
   forceEmailVerification,
   nestedOU,
