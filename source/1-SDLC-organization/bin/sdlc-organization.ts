@@ -60,7 +60,6 @@ const nestedOU: OUSpec[] = [
                         stageName: 'staging',
                         stageOrder: 1,
                         hostedServices: ['ALL'],
-                        // existingAccountId: '060465997059'
                     },
                     {
                         name: 'Prod',
@@ -70,7 +69,26 @@ const nestedOU: OUSpec[] = [
                         hostedServices: ['ALL']
                     }
                 ]
-            }
+            },
+            {
+                name: 'acme',
+                accounts: [
+                    {
+                        name: 'Staging',
+                        type: AccountType.STAGE,
+                        stageName: 'staging',
+                        stageOrder: 1,
+                        hostedServices: ['ALL'],
+                    },
+                    {
+                        name: 'Prod',
+                        type: AccountType.STAGE,
+                        stageName: 'prod',
+                        stageOrder: 2,
+                        hostedServices: ['ALL']
+                    }
+                ]
+            },
         ]
     }
 ];
